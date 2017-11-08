@@ -1,0 +1,32 @@
+{
+  "name": "surge-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run watch",
+    "watch": "npm-run-all -p watch:*",
+    "watch:server": "browser-sync start --server 'dist' --files 'dist' --port 4411",
+    "mk-css": "mkdirp dist/css",
+    "watch:stylus": "npm run mk-css && stylus -u autoprefixer-stylus -w -c src/stylus/main.styl -o dist/css/main.css",
+    "mk-js": "mkdirp dist/js",
+    "js-watch": "watchify src/js/main.js -o dist/js/main.js -t babelify",
+    "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch",
+    "build": "surge -p /Users/matheus.wensch/Documents/mateus/testes/surge-js/"
+  },
+  "author": "Mateus Wensch",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.14.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.18.13",
+    "browserify": "^14.5.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.1",
+    "stylus": "^0.54.5",
+    "watchify": "^3.9.0"
+  }
+}

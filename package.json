@@ -13,6 +13,7 @@
     "mk-js": "mkdirp dist/js",
     "js-watch": "watchify src/js/main.js -o dist/js/main.js -t babelify",
     "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch",
+    "watch:comp-njk": "nunjucks *.njk -p src/html -w -o dist",
     "build": "surge -p /Users/matheus.wensch/Documents/mateus/testes/surge-js/"
   },
   "author": "Mateus Wensch",
@@ -26,6 +27,8 @@
     "browserify": "^14.5.0",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.1",
+    "nunjucks": "^3.0.1",
+    "nunjucks-cli": "^0.5.1",
     "stylus": "^0.54.5",
     "watchify": "^3.9.0"
   }

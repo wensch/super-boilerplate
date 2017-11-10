@@ -1,9 +1,8 @@
 {% extends "layout/_layout.njk" %}
-{% from "data/arroz.njk" import data %}
+{% from "data/_arroz.njk" import data %}
+{% include "data/_arroz.njk" %}
 
 {% block main %}
-
   <h1>{{data.titulo}}</h1>
-  <h2>{{data.desc}}</h2>
-
+  <h1>{{data.xpto.titulo}}</h1>
 {% endblock %}

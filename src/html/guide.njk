@@ -1,7 +1,20 @@
+{# Layout #}
 {% extends "layout/_layout.njk" %}
+
+{# Imports #}
 {% from "components/_button.njk" import button %}
 
+
+
 {% block main %}
-  <h1>Guideline</h1>
-  {{button('Arroz', class='btn-default')}}
+	<h1>Guideline</h1>
+	{{button('Arroz', class='btn-default')}}
+	{{button('Arroz', class='btn-default', format='href', link='/arroz.html')}}
+
+	<pre><code class="html">
+		{% filter escape %}
+			{{ button('Arroz')}}
+		{% endfilter %}
+	</code></pre>
+
 {% endblock %}

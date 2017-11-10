@@ -1,3 +1,9 @@
-{% macro button(txt, class='', type='text', id='') %}
-  <button type="{{type}}" class="{{class}}" id="{{id}}">{{txt}}</button>
+{% macro button(txt, class='', format='button', link='#', type='text', id='') %}
+	{% if format == "href" %}
+		<a href="{{link}}" class="{{class}}" id="{{id}}">{{txt}}</a>
+	{% else %}
+		<button type="{{type}}" class="{{class}}" id="{{id}}">
+			{{txt}}
+		</button>
+	{% endif %}
 {% endmacro %}

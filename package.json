@@ -1,8 +1,11 @@
 {
-  "name": "surge-js",
+  "name": "super-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "domain": "super-boilerplate.surge.sh"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run watch",
@@ -14,7 +17,7 @@
     "js-watch": "watchify src/js/main.js -o dist/js/main.js -t babelify",
     "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch",
     "watch:comp-njk": "nunjucks **/*.njk -p src/html -w -o dist ",
-    "build": "surge -p /Users/matheus.wensch/Documents/mateus/testes/surge-js/"
+    "build": " echo $npm_package_config_domain > dist/CNAME && surge -p dist"
   },
   "author": "Mateus Wensch",
   "license": "ISC",
@@ -25,6 +28,7 @@
     "babelify": "^8.0.0",
     "browser-sync": "^2.18.13",
     "browserify": "^14.5.0",
+    "imageoptim-cli": "^1.15.4",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.1",
     "nunjucks": "^3.0.1",

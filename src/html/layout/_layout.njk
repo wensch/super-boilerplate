@@ -7,17 +7,14 @@
   <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="js/main.js"></script>
   <link rel="icon" href="https://i.stack.imgur.com/Mmww2.png" />
+  {% block scripts %}{% endblock %}
   {# <script type="text/javascript" src="js/vendors/highlight.min.js"></script> #}
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 </head>
 
 <body>
   {% include "partials/_header.njk" %}
 
   {% block main %}{% endblock %}
-
-
-  <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
 
 </body>
 </html>

@@ -12,8 +12,7 @@
     "watch:stylus": "npm run mk-css && stylus -u autoprefixer-stylus -w -c src/stylus/main.styl -o dist/css/main.css",
     "mk-js": "mkdirp dist/js",
     "js-watch": "watchify src/js/main.js -o dist/js/main.js -t babelify",
-    "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch && npm run js-vendor",
-    "js-vendor": "mkdirp dist/js/vendors && browserify src/js/vendors/highlight.js -o dist/js/vendors/highlight.min.js",
+    "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch",
     "watch:comp-njk": "nunjucks **/*.njk -p src/html -w -o dist ",
     "build": "surge -p /Users/matheus.wensch/Documents/mateus/testes/surge-js/"
   },

@@ -1,4 +1,5 @@
 {% extends "./layout/_layout.njk" %}
+{% from "data/_index.njk" import data %}
 {% block main %}
-  <h1>Hello Word Nunjucks</h1>
+  <h1>{{data.titulo}}</h1>
 {% endblock %}

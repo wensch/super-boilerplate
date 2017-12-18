@@ -7,16 +7,18 @@
     "domain": "super-boilerplate.surge.sh"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run watch",
+    "start": "npm run watch && mk-assets",
     "watch": "npm-run-all -p watch:*",
-    "watch:server": "browser-sync start --server 'dist' --files 'dist' --port 4411",
-    "mk-css": "mkdirp dist/css",
-    "watch:stylus": "npm run mk-css && stylus -u autoprefixer-stylus -w -c src/stylus/main.styl -o dist/css/main.css",
-    "mk-js": "mkdirp dist/js",
-    "js-watch": "watchify src/js/main.js -o dist/js/main.js -t babelify",
-    "watch:compile-js": "npm run mk-js && browserify src/js/main.js -o dist/js/main.js -t babelify && npm run js-watch",
-    "watch:comp-njk": "nunjucks **/*.njk -p src/html -w -o dist ",
+    "mk-assets": "mkdirp dist/assets",
+    "mk-css": "mkdirp dist/assets/css",
+    "mk-js": "mkdirp dist/assets/js",
+    "mk-img": "mkdirp dist/assets/img",
+    "watch:html": "nunjucks **/*.njk -p src/html -w -o dist ",
+    "watch:css": "npm run mk-css && stylus -u autoprefixer-stylus -w -c src/stylus/main.styl -o dist/assets/css/main.css",
+    "watch:js": "npm run mk-js && browserify src/js/main.js -o -t babelify && npm run js-watch",
+    "js-watch": "watchify src/js/main.js -t babelify -o dist/assets/js/main.js | uglifyjs dist/assets/js/main.js -c -m -o dist/assets/js/main.js",
+    "watch:images": "npm run mk-img && imagemin src/img/* -o dist/assets/img",
+    "watch:server": "browser-sync start --server 'dist' --files 'dist/assets/css/*.css, dist/*.html, dist/assets/js/*.js' reload --port 1144",
     "build": " echo $npm_package_config_domain > dist/CNAME && surge -p dist"
   },
   "author": "Mateus Wensch",
@@ -28,12 +30,18 @@
     "babelify": "^8.0.0",
     "browser-sync": "^2.18.13",
     "browserify": "^14.5.0",
-    "imageoptim-cli": "^1.15.4",
+    "flatpickr": "^4.1.4",
+    "imagemin-cli": "^3.0.0",
+    "minifier": "^0.8.1",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.1",
     "nunjucks": "^3.0.1",
     "nunjucks-cli": "^0.5.1",
     "stylus": "^0.54.5",
+    "uglify-js": "^3.2.2",
     "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "jails-js": "^3.2.1"
   }
 }

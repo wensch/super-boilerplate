@@ -13,7 +13,7 @@
     "mk-css": "mkdirp dist/assets/css",
     "mk-js": "mkdirp dist/assets/js",
     "mk-img": "mkdirp dist/assets/img",
-    "watch:html": "nunjucks **/*.njk -p src/html -w -o dist ",
+    "watch:html": "pug src/html/*.pug -w -o dist ",
     "watch:css": "npm run mk-css && stylus -u autoprefixer-stylus -w -c src/stylus/main.styl -o dist/assets/css/main.css",
     "watch:js": "npm run mk-js && browserify src/js/main.js -o -t babelify && npm run js-watch",
     "js-watch": "watchify src/js/main.js -t babelify -o dist/assets/js/main.js | uglifyjs dist/assets/js/main.js -c -m -o dist/assets/js/main.js",
@@ -37,6 +37,7 @@
     "npm-run-all": "^4.1.1",
     "nunjucks": "^3.0.1",
     "nunjucks-cli": "^0.5.1",
+    "pug-cli": "^1.0.0-alpha6",
     "stylus": "^0.54.5",
     "uglify-js": "^3.2.2",
     "watchify": "^3.9.0"

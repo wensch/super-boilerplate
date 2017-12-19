@@ -1,0 +1,12 @@
+extends layout/_layout
+
+block content 
+	- var language = "En"
+	- var config = { a: 'something', b: 'something-else' }
+	if  language == "En"
+		h1 Hello Word - Pug
+	else
+		h1 Olá Mundo - Pug
+	
+	.box
+		p config.a
